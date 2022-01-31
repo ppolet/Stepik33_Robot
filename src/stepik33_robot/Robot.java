@@ -9,7 +9,7 @@ public class Robot {
         this.x = x;
         this.y = y;
         this.direction = direction;
-    }
+    }  
     
     public Direction getDirection() {
         return direction;
@@ -31,11 +31,16 @@ public class Robot {
     }
 
     public void turnRight() {
-        // повернуться на 90 градусов по часовой стрелке
+        if(direction == Direction.UP) {direction = Direction.RIGHT;}
+        else if(direction == Direction.RIGHT) {direction = Direction.DOWN;}
+        else if(direction == Direction.DOWN) {direction = Direction.LEFT;}
+        else if(direction == Direction.LEFT) {direction = Direction.UP;}
     }
 
     public void stepForward() {
-        // шаг в направлении взгляда
-        // за один шаг робот изменяет одну свою координату на единицу
-    }    
-}
+        if(direction == Direction.UP){y++;}
+        if(direction == Direction.DOWN) {y--;}
+        if(direction == Direction.RIGHT){x++;}
+        if(direction == Direction.LEFT) {x--;}
+    }
+}  
