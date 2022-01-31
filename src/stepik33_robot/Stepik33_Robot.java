@@ -30,6 +30,68 @@ public class Stepik33_Robot {
     public static void main(String[] args) {
        Robot robot = new Robot(0,0,Direction.UP);
        
+       int toX = 3;
+       int toY = 5;
+       
+       //-----------------------------------
+       
+       //---X---
+       if(robot.getX() != toX){
+           if(robot.getX() > toX){          //turn LEFT
+               if(robot.getDirection() == Direction.RIGHT){
+                   robot.turnLeft();
+                   robot.turnLeft();
+               } else if(robot.getDirection() == Direction.UP){
+                   robot.turnLeft();
+               } else if(robot.getDirection() == Direction.DOWN){
+                   robot.turnRight();
+               }
+           } else {                         //turn RIGHT
+               if(robot.getDirection() == Direction.LEFT){
+                   robot.turnLeft();
+                   robot.turnLeft();
+               } else if(robot.getDirection() == Direction.UP){
+                   robot.turnRight();
+               } else if(robot.getDirection() == Direction.DOWN){
+                   robot.turnLeft();
+               }
+           }
+
+           int stepCounts = Math.abs(robot.getX() - toX);
+           for(int i = 0; i < stepCounts; i++){
+               robot.stepForward();
+           }
+       }
+       
+       //---Y---
+       if(robot.getY() != toY){
+           if(robot.getY() > toY){          //turn DOWN
+               if(robot.getDirection() == Direction.UP){
+                   robot.turnLeft();
+                   robot.turnLeft();
+               } else if(robot.getDirection() == Direction.LEFT){
+                   robot.turnLeft();
+               } else if(robot.getDirection() == Direction.RIGHT){
+                   robot.turnRight();
+               }
+           } else {                         //turn UP
+               if(robot.getDirection() == Direction.DOWN){
+                   robot.turnLeft();
+                   robot.turnLeft();
+               } else if(robot.getDirection() == Direction.LEFT){
+                   robot.turnRight();
+               } else if(robot.getDirection() == Direction.RIGHT){
+                   robot.turnLeft();
+               }
+           }
+           
+           int stepCounts = Math.abs(robot.getY() - toY);
+           for(int i = 0; i < stepCounts; i++){
+               robot.stepForward();
+           }
+       }
+       
+        System.out.println("Robot: " + robot.getX() + ":" + robot.getY());
     }
     
 }
